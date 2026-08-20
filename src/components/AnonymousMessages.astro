@@ -1,31 +1,88 @@
 ---
+const qaPairs = [
+  {
+    q: "¿Por qué dejar la Física por la Ingeniería de Sistemas?",
+    a: "La física responde cómo funciona la realidad, pero programar me permite crear mi propia realidad sin esperar a que el laboratorio tenga presupuesto. Además, compilar a la primera da mejor subidón."
+  },
+  {
+    q: "¿Es verdad que en Duhvia automatizan todo o solo es marketing?",
+    a: "Si tengo que hacer una tarea manual más de 3 veces, prefiero perder 5 horas escribiendo un script que la haga sola. Llámenlo eficiencia o pereza inteligente. Funciona igual."
+  },
+  {
+    q: "¿Cuál es tu película comfort cuando todo sale mal?",
+    a: "Blade Runner 2049 o Drive. Pon a Ryan Gosling mirando la nada durante dos horas con luces neón y un buen soundtrack de synthwave y me arreglas la semana."
+  },
+  {
+    q: "¿Juegas Fortnite en serio o solo por los memes?",
+    a: "Solo para mantener los reflejos al día con amigos de la UNSA y tirar un par de risas. No me busquen en torneos, me encuentran en las partidas nocturnas casuales."
+  }
+];
 ---
 
-<section id="anonymous" class="py-24 px-6 relative bg-neutral-950/80 border-t border-white/5">
+<section id="anonymous" class="py-24 px-6 relative bg-neutral-950/90 border-t border-white/5">
   <!-- Glow cinemático tenue de fondo -->
-  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-orange-600/5 rounded-full blur-[130px] pointer-events-none"></div>
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-orange-600/5 rounded-full blur-[140px] pointer-events-none"></div>
 
-  <div class="max-w-3xl mx-auto relative z-10">
+  <div class="max-w-4xl mx-auto relative z-10 space-y-16">
     
     <!-- Encabezado de Sección -->
-    <div class="text-center space-y-3 mb-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-mono tracking-wider uppercase">
+    <div class="text-center space-y-3">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-mono tracking-wider uppercase">
         <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
-        Mensajes Anónimos & Q&A
+        Q&A Anónimo & Respuestas
       </div>
       <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
-        Pregúntame o dime lo que quieras
+        Pregúntame lo que quieras. Sin filtro.
       </h2>
       <p class="text-slate-400 text-sm md:text-base font-light max-w-lg mx-auto">
-        Envía un mensaje 100% anónimo. Solo yo recibiré tu mensaje y decidiré si responderlo o archivarlo.
+        Tira tu pregunta o confesión anónima abajo. Si vale la pena o me da gracia, la respondo y la publico en este muro.
       </p>
     </div>
 
-    <!-- Tarjeta Glassmorphic con Formulario -->
+    <!-- Muro de Preguntas Frecuentes / Respuestas de Dante (Estilo Casual/Rebelde) -->
+    <div class="space-y-6">
+      <div class="flex items-center gap-3">
+        <span class="text-orange-500 font-mono text-xs font-semibold tracking-wider uppercase">// Respuestas destacadas</span>
+        <div class="h-[1px] bg-white/10 flex-1"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {qaPairs.map((pair) => (
+          <div class="glass-card p-6 rounded-2xl border border-white/10 space-y-4 flex flex-col justify-between relative group hover:border-orange-500/30 transition-all">
+            <!-- Pregunta del usuario anónimo -->
+            <div class="space-y-1">
+              <span class="text-[10px] font-mono text-slate-400 uppercase tracking-widest block">Anónimo preguntó:</span>
+              <p class="text-sm font-semibold text-orange-300 italic">
+                "{pair.q}"
+              </p>
+            </div>
+
+            <!-- Respuesta de Dante -->
+            <div class="pt-3 border-t border-white/5 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                <span class="text-xs font-mono font-bold text-white">Dante:</span>
+              </div>
+              <p class="text-xs md:text-sm text-slate-300 font-light leading-relaxed">
+                {pair.a}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Tarjeta Glassmorphic con Formulario Anónimo + Protección Honeypot & Rate Limit Local -->
     <div class="glass-card p-6 md:p-10 rounded-2xl border border-white/10 relative overflow-hidden">
       
       <form id="anon-form" class="space-y-6">
         
+        <!-- Campo Honeypot para Atrapar Bots (Invisible para humanos) -->
+        <div class="hidden" aria-hidden="true">
+          <label for="b_website">No llenar si eres humano:</label>
+          <input type="text" name="b_website" id="b_website" tabindex="-1" autocomplete="off" />
+        </div>
+
         <!-- Metadata oculta capturada dinámicamente -->
         <input type="hidden" name="user_agent" id="meta-useragent" />
         <input type="hidden" name="screen_res" id="meta-screen" />
@@ -36,8 +93,8 @@
         <!-- Campo de Mensaje Anónimo -->
         <div class="space-y-2">
           <label for="message" class="block text-xs font-mono text-slate-300 uppercase tracking-wider flex items-center justify-between">
-            <span>Tu mensaje anónimo:</span>
-            <span class="text-orange-400/80 text-[11px] font-sans">Sin registro de nombre o correo</span>
+            <span>Tu mensaje o pregunta anónima:</span>
+            <span class="text-orange-400/80 text-[11px] font-sans">Sin nombres • Cifrado</span>
           </label>
 
           <textarea 
@@ -45,7 +102,8 @@
             name="message" 
             rows="4" 
             required
-            placeholder="¿Qué quieres preguntarme o decirme? (Confesiones, preguntas de código, recomendaciones de cine...)"
+            maxlength="800"
+            placeholder="Dispara tu pregunta (código, proyectos en Duhvia, recomendaciones de música, o lo que sea...)"
             class="w-full bg-neutral-900/90 border border-white/10 rounded-xl p-4 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all resize-none text-sm md:text-base leading-relaxed"
           ></textarea>
         </div>
@@ -56,7 +114,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-orange-500/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
             </svg>
-            Cifrado & Directo a Dante
+            Rate-Limit Activado & Directo a Dante
           </div>
 
           <button 
@@ -64,14 +122,14 @@
             id="submit-btn"
             class="w-full sm:w-auto px-8 py-3 rounded-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-amber-500 text-white font-medium text-sm transition-all shadow-lg shadow-orange-950/40 hover:shadow-orange-500/25 flex items-center justify-center gap-2 group cursor-pointer"
           >
-            <span>Enviar Mensaje Anónimo</span>
+            <span>Lanzar Pregunta</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </button>
         </div>
 
-        <!-- Alertas de Estado (Éxito / Error) -->
+        <!-- Alertas de Estado -->
         <div id="form-status" class="hidden p-4 rounded-xl text-sm font-medium text-center"></div>
 
       </form>
@@ -81,8 +139,8 @@
 </section>
 
 <script>
-  // Captura automática de detalles del dispositivo/entorno antes de enviar
   document.addEventListener('DOMContentLoaded', () => {
+    // 1. Captura de metadata de entorno
     const userAgentInput = document.getElementById('meta-useragent') as HTMLInputElement;
     const screenInput = document.getElementById('meta-screen') as HTMLInputElement;
     const timezoneInput = document.getElementById('meta-timezone') as HTMLInputElement;
@@ -99,17 +157,43 @@
     const statusDiv = document.getElementById('form-status') as HTMLDivElement;
     const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
 
+    // Constantes para Rate-Limiting en cliente
+    const COOLDOWN_SECONDS = 60; // 60 segundos entre envíos por usuario
+    const STORAGE_KEY = 'dante_last_anon_submit';
+
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       
+      // Honeypot anti-bots
+      const honeypot = (document.getElementById('b_website') as HTMLInputElement)?.value;
+      if (honeypot) {
+        // Es un bot, fingimos éxito pero no enviamos nada
+        statusDiv.className = 'p-4 rounded-xl text-sm font-medium text-center bg-emerald-950/80 border border-emerald-500/30 text-emerald-300';
+        statusDiv.innerText = '✨ ¡Mensaje recibido!';
+        statusDiv.classList.remove('hidden');
+        form.reset();
+        return;
+      }
+
+      // Control de Spam / Rate-Limiting local
+      const lastSubmit = localStorage.getItem(STORAGE_KEY);
+      if (lastSubmit) {
+        const timeDiff = (Date.now() - parseInt(lastSubmit, 10)) / 1000;
+        if (timeDiff < COOLDOWN_SECONDS) {
+          const remaining = Math.ceil(COOLDOWN_SECONDS - timeDiff);
+          statusDiv.className = 'p-4 rounded-xl text-sm font-medium text-center bg-amber-950/80 border border-amber-500/30 text-amber-300';
+          statusDiv.innerText = `⏳ Tranquilo viejo... Espera ${remaining} segundos antes de enviar otro mensaje.`;
+          statusDiv.classList.remove('hidden');
+          return;
+        }
+      }
+
       submitBtn.disabled = true;
-      submitBtn.opacity = '0.6';
+      submitBtn.style.opacity = '0.6';
       submitBtn.innerText = 'Enviando...';
 
       const formData = new FormData(form);
-      
-      // Reemplaza esta URL con la tuya de Formspree o Web3Forms cuando te registres (es gratis)
-      const endpoint = 'https://formspree.io/f/xvgoknyb';
+      const endpoint = 'https://formspree.io/f/mzepoelb';
 
       try {
         const response = await fetch(endpoint, {
@@ -121,20 +205,23 @@
         });
 
         if (response.ok) {
+          // Guardar timestamp de último envío exitoso
+          localStorage.setItem(STORAGE_KEY, Date.now().toString());
+
           statusDiv.className = 'p-4 rounded-xl text-sm font-medium text-center bg-emerald-950/80 border border-emerald-500/30 text-emerald-300';
-          statusDiv.innerText = '✨ ¡Mensaje anónimo enviado con éxito! Dante lo leerá pronto.';
+          statusDiv.innerText = '🔥 Mensaje enviado. Si la pregunta vale la pena, saldrá arriba pronto.';
           statusDiv.classList.remove('hidden');
           form.reset();
         } else {
           throw new Error('Error al enviar');
         }
       } catch (err) {
-        statusDiv.className = 'p-4 rounded-xl text-sm font-medium text-center bg-amber-950/80 border border-amber-500/30 text-amber-300';
-        statusDiv.innerText = '📩 Mensaje registrado localmente. Para recibirlo en tu correo, conecta tu ID de Formspree.';
+        statusDiv.className = 'p-4 rounded-xl text-sm font-medium text-center bg-red-950/80 border border-red-500/30 text-red-300';
+        statusDiv.innerText = '❌ Error al conectar con el servidor. Inténtalo de nuevo más tarde.';
         statusDiv.classList.remove('hidden');
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerText = 'Enviar Mensaje Anónimo';
+        submitBtn.innerText = 'Lanzar Pregunta';
       }
     });
   });

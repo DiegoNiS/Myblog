@@ -1,4 +1,12 @@
 ---
+const footerSocials = [
+  { name: "GitHub", href: "https://github.com/DiegoNiS" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/diego-claudio-nina-suyo-14206335b/" },
+  { name: "WhatsApp", href: "https://wa.me/51960335622?text=Hola%20Dante,%20vengo%20desde%20tu%20sitio%20web" },
+  { name: "Instagram", href: "https://www.instagram.com/dantnt7" },
+  { name: "TikTok", href: "https://www.tiktok.com/@dantnt7" },
+  { name: "Facebook", href: "https://www.facebook.com/diego.nina.12720" }
+];
 ---
 
 <footer class="py-16 px-6 border-t border-white/10 bg-neutral-950 relative">
@@ -14,14 +22,18 @@
       </p>
     </div>
 
-    <!-- Easter Egg Hint / Interactive Space -->
-    <div class="px-4 py-2 rounded-full glass-panel border border-white/5 text-xs text-slate-500 font-mono text-center">
-      <span class="text-orange-500/80">⚡ Space reserved for easter eggs & interactives</span>
+    <!-- Enlaces Rápidos a Redes Social en el Footer -->
+    <div class="flex flex-wrap justify-center items-center gap-4 text-xs font-mono text-slate-400">
+      {footerSocials.map((item) => (
+        <a href={item.href} target="_blank" rel="noopener noreferrer" class="hover:text-orange-400 transition-colors">
+          {item.name}
+        </a>
+      ))}
     </div>
 
     <!-- Copyright -->
     <div class="text-xs text-slate-500 font-mono text-center md:text-right">
-      © {new Date().getFullYear()} Dante. All rights reserved.
+      © {new Date().getFullYear()} Dante. <span class="text-slate-600 block sm:inline">MI sitio, mis reglas.</span>
     </div>
 
   </div>

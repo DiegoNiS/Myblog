@@ -1,5 +1,50 @@
 ---
 import PlaceholderImage from './PlaceholderImage.astro';
+
+const socialLinks = [
+  {
+    name: "GitHub",
+    label: "@DiegoNiS",
+    href: "https://github.com/DiegoNiS",
+    icon: "💻",
+    color: "hover:border-purple-500/50 hover:text-purple-400"
+  },
+  {
+    name: "LinkedIn",
+    label: "Diego Nina",
+    href: "https://www.linkedin.com/in/diego-claudio-nina-suyo-14206335b/",
+    icon: "💼",
+    color: "hover:border-sky-500/50 hover:text-sky-400"
+  },
+  {
+    name: "WhatsApp",
+    label: "+51 960 335 622",
+    href: "https://wa.me/51960335622?text=Hola%20Dante,%20vengo%20desde%20tu%20sitio%20web",
+    icon: "💬",
+    color: "hover:border-emerald-500/50 hover:text-emerald-400"
+  },
+  {
+    name: "Instagram",
+    label: "@dantnt7",
+    href: "https://www.instagram.com/dantnt7",
+    icon: "📸",
+    color: "hover:border-pink-500/50 hover:text-pink-400"
+  },
+  {
+    name: "TikTok",
+    label: "@dantnt7",
+    href: "https://www.tiktok.com/@dantnt7",
+    icon: "🎵",
+    color: "hover:border-cyan-500/50 hover:text-cyan-400"
+  },
+  {
+    name: "Facebook",
+    label: "Diego Nina",
+    href: "https://www.facebook.com/diego.nina.12720",
+    icon: "👤",
+    color: "hover:border-blue-500/50 hover:text-blue-400"
+  }
+];
 ---
 
 <section class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden">
@@ -11,7 +56,7 @@ import PlaceholderImage from './PlaceholderImage.astro';
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
       <!-- Columna Texto Hero -->
-      <div class="lg:col-span-7 space-y-8 text-left">
+      <div class="lg:col-span-7 space-y-7 text-left">
         <!-- Badge de Apertura -->
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-mono tracking-wider uppercase">
           <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
@@ -24,29 +69,45 @@ import PlaceholderImage from './PlaceholderImage.astro';
         </h1>
 
         <!-- Subtexto Obligatorio -->
-        <p class="text-lg md:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl border-l-2 border-orange-500/40 pl-4 py-1 italic">
+        <p class="text-lg md:text-xl text-slate-300 font-normal leading-relaxed border-l-2 border-orange-500/40 pl-4 py-1 italic">
           "Automatizo lo complejo, diseño soluciones y disfruto de la melancolía cinemática. 'Cause it's too cold for you here..."
         </p>
 
-        <!-- CTAs / Social links -->
-        <div class="pt-4 flex flex-wrap items-center gap-4">
-          <a href="#about" class="px-6 py-3 rounded-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-amber-500 text-white font-medium text-sm transition-all shadow-lg shadow-orange-950/40 hover:shadow-orange-500/25 flex items-center gap-2">
-            Explorar Portafolio
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </a>
-
-          <a href="https://duhvia.com" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full glass-panel hover:bg-white/10 text-slate-200 font-medium text-sm transition-all border border-white/10 flex items-center gap-2">
-            Visitar Duhvia
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
+        <!-- Declaración Rebelde de Sitio Personal -->
+        <div class="glass-panel p-4 rounded-xl border border-white/10 relative overflow-hidden bg-neutral-900/40">
+          <div class="flex items-start gap-3">
+            <span class="text-orange-500 text-lg select-none">⚡</span>
+            <div class="space-y-1">
+              <p class="text-xs font-mono text-orange-400 uppercase tracking-wider font-semibold">Nota personal / Reglas del sitio:</p>
+              <p class="text-sm text-slate-200 leading-relaxed">
+                Este es mi sitio y blog personal, así que voy a poner aquí todo lo que yo quiera y se me apetezca. Estaré actualizando todo este sitio más constantemente ya que, repito y recalco: <span class="text-white font-semibold underline decoration-orange-500 decoration-2">es MI sitio</span>.
+              </p>
+            </div>
+          </div>
         </div>
+
+        <!-- Redes Sociales / Contacto Directo -->
+        <div class="pt-2 space-y-3">
+          <span class="text-xs font-mono text-slate-400 uppercase tracking-widest block">Conecta conmigo o déjame un mensaje directo:</span>
+          <div class="flex flex-wrap gap-2.5">
+            {socialLinks.map((social) => (
+              <a 
+                href={social.href} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class={`px-3.5 py-2 rounded-xl glass-panel text-slate-300 border border-white/10 text-xs font-medium transition-all flex items-center gap-2 ${social.color}`}
+              >
+                <span>{social.icon}</span>
+                <span>{social.name}:</span>
+                <span class="font-mono text-slate-400">{social.label}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
       </div>
 
-      <!-- Columna Visual Hero (Retrato Placeholder) -->
+      <!-- Columna Visual Hero (Retrato) -->
       <div class="lg:col-span-5 relative">
         <div class="relative mx-auto max-w-sm lg:max-w-none">
           <!-- Marco sutil con iluminación -->
@@ -57,7 +118,7 @@ import PlaceholderImage from './PlaceholderImage.astro';
               src="/assets/dante-hero.jpg"
               alt="Foto de perfil o retrato cinemático de Dante en plano medio con iluminación tenue al atardecer"
               title="Retrato Cinemático Principal (Dante)"
-              badge="Imagen Hero"
+              badge="Dante's Portrait"
               aspectRatio="aspect-[4/5]"
             />
           </div>

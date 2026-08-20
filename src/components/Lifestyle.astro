@@ -1,0 +1,83 @@
+---
+import PlaceholderImage from './PlaceholderImage.astro';
+
+const cards = [
+  {
+    id: "social",
+    title: "Social",
+    badge: "Pausas & Charlas",
+    text: "Las pausas necesarias: una buena copa en Vinos del Corazón, caminatas al atardecer o conversar arreglando el mundo.",
+    imageSrc: "/assets/vinos-atardecer.jpg",
+    imageAlt: "Fotografía estética de copas de vino al atardecer en Vinos del Corazón con tono cálido y melancólico"
+  },
+  {
+    id: "hobbies",
+    title: "Hobbies",
+    badge: "Música & Noches de Juego",
+    text: "Entre tocar la guitarra, cocinar algo nuevo, el dibujo realista y las noches de billar, cartas o dominó.",
+    imageSrc: "/assets/billar-noche.jpg",
+    imageAlt: "Fotografía en plano cenital o detalle de una mesa de billar iluminada de noche o guitarra acústica"
+  },
+  {
+    id: "gaming",
+    title: "Gaming",
+    badge: "Mecánicas al Día",
+    text: "Unas partidas de Fortnite con amigos (solo para mantener las mecánicas al día).",
+    imageSrc: "/assets/fortnite-gaming.jpg",
+    imageAlt: "Captura estética de setup gamer en penumbra jugando Fortnite con amigos"
+  },
+  {
+    id: "mascotas",
+    title: "Mascotas",
+    badge: "Dueños de mi Tiempo",
+    text: "Mis perros, mis gatos y mi infinita colección de memes de animales. Los verdaderos dueños de mi tiempo libre.",
+    imageSrc: "/assets/loki-gato.jpg",
+    imageAlt: "Fotografía tierna y divertida de Loki (gato) o perros en un momento relajado en casa"
+  }
+];
+---
+
+<section id="lifestyle" class="py-24 px-6 relative bg-neutral-950/60 border-t border-white/5">
+  <div class="max-w-5xl mx-auto">
+    
+    <!-- Encabezado de Sección -->
+    <div class="flex items-center gap-3 mb-12">
+      <span class="text-orange-500 font-mono text-sm font-semibold tracking-wider uppercase">03 //</span>
+      <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Lifestyle & Pasatiempos</h2>
+      <div class="h-[1px] bg-white/10 flex-1 ml-4"></div>
+    </div>
+
+    <!-- Grid de Tarjetas (2x2 en pantallas medianas/grandes) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {cards.map((card) => (
+        <div class="glass-card p-4 rounded-2xl flex flex-col justify-between space-y-4 group">
+          <!-- Placeholder de Imagen -->
+          <PlaceholderImage 
+            src={card.imageSrc}
+            alt={card.imageAlt}
+            title={card.title}
+            badge={card.badge}
+            aspectRatio="aspect-[16/10]"
+          />
+
+          <!-- Contenido de la Tarjeta (Texto exacto) -->
+          <div class="px-2 pb-2 space-y-2">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-bold text-white group-hover:text-orange-400 transition-colors">
+                {card.title}
+              </h3>
+              <span class="text-[11px] font-mono text-slate-400 bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full">
+                {card.badge}
+              </span>
+            </div>
+
+            <p class="text-slate-300 text-sm leading-relaxed font-light">
+              {card.text}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

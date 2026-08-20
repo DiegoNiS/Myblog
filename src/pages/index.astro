@@ -1,0 +1,57 @@
+---
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Vibes from '../components/Vibes.astro';
+import Lifestyle from '../components/Lifestyle.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const title = "Dante | Blog & Portafolio Personal - dante.duhvia.com";
+const description = "Estudiante de Ingeniería de Sistemas en la UNSA y co-fundador de la agencia Duhvia. Automatizo lo complejo, diseño soluciones y disfruto de la melancolía cinemática.";
+---
+
+<!ts-html>
+<html lang="es" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://dante.duhvia.com" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+
+  <body class="bg-[#050507] text-slate-100 font-sans antialiased selection:bg-orange-500/30 selection:text-orange-200">
+    <!-- Overlay Cinemático de Grano de Película -->
+    <div class="film-grain"></div>
+
+    <!-- Header / Navbar -->
+    <Header />
+
+    <!-- Secciones Principales -->
+    <main>
+      <Hero />
+      <About />
+      <Vibes />
+      <Lifestyle />
+    </main>
+
+    <!-- Footer -->
+    <Footer />
+  </body>
+</html>

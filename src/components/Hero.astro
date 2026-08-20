@@ -1,0 +1,69 @@
+---
+import PlaceholderImage from './PlaceholderImage.astro';
+---
+
+<section class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-6 overflow-hidden">
+  <!-- Glow cinemático de fondo -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-orange-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+  <div class="absolute bottom-10 right-10 w-[400px] h-[300px] bg-red-900/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+  <div class="max-w-5xl mx-auto w-full relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Columna Texto Hero -->
+      <div class="lg:col-span-7 space-y-8 text-left">
+        <!-- Badge de Apertura -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-mono tracking-wider uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+          Ingeniería de Sistemas & Agencia Duhvia
+        </div>
+
+        <!-- Texto Principal Obligatorio -->
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+          Hola, soy Dante. Encuentro belleza en una tarde nublada y en un código que compila a la primera.
+        </h1>
+
+        <!-- Subtexto Obligatorio -->
+        <p class="text-lg md:text-xl text-slate-300 font-normal leading-relaxed max-w-2xl border-l-2 border-orange-500/40 pl-4 py-1 italic">
+          "Automatizo lo complejo, diseño soluciones y disfruto de la melancolía cinemática. 'Cause it's too cold for you here..."
+        </p>
+
+        <!-- CTAs / Social links -->
+        <div class="pt-4 flex flex-wrap items-center gap-4">
+          <a href="#about" class="px-6 py-3 rounded-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-amber-500 text-white font-medium text-sm transition-all shadow-lg shadow-orange-950/40 hover:shadow-orange-500/25 flex items-center gap-2">
+            Explorar Portafolio
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </a>
+
+          <a href="https://duhvia.com" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-full glass-panel hover:bg-white/10 text-slate-200 font-medium text-sm transition-all border border-white/10 flex items-center gap-2">
+            Visitar Duhvia
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna Visual Hero (Retrato Placeholder) -->
+      <div class="lg:col-span-5 relative">
+        <div class="relative mx-auto max-w-sm lg:max-w-none">
+          <!-- Marco sutil con iluminación -->
+          <div class="absolute -inset-1 rounded-2xl bg-gradient-to-b from-orange-500/20 via-transparent to-red-500/10 blur-lg opacity-70"></div>
+          
+          <div class="relative glass-card p-3 rounded-2xl">
+            <PlaceholderImage 
+              src="/assets/dante-hero.jpg"
+              alt="Foto de perfil o retrato cinemático de Dante en plano medio con iluminación tenue al atardecer"
+              title="Retrato Cinemático Principal (Dante)"
+              badge="Imagen Hero"
+              aspectRatio="aspect-[4/5]"
+            />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

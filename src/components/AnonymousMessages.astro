@@ -1,0 +1,141 @@
+---
+---
+
+<section id="anonymous" class="py-24 px-6 relative bg-neutral-950/80 border-t border-white/5">
+  <!-- Glow cinemático tenue de fondo -->
+  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-orange-600/5 rounded-full blur-[130px] pointer-events-none"></div>
+
+  <div class="max-w-3xl mx-auto relative z-10">
+    
+    <!-- Encabezado de Sección -->
+    <div class="text-center space-y-3 mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-mono tracking-wider uppercase">
+        <span class="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse"></span>
+        Mensajes Anónimos & Q&A
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+        Pregúntame o dime lo que quieras
+      </h2>
+      <p class="text-slate-400 text-sm md:text-base font-light max-w-lg mx-auto">
+        Envía un mensaje 100% anónimo. Solo yo recibiré tu mensaje y decidiré si responderlo o archivarlo.
+      </p>
+    </div>
+
+    <!-- Tarjeta Glassmorphic con Formulario -->
+    <div class="glass-card p-6 md:p-10 rounded-2xl border border-white/10 relative overflow-hidden">
+      
+      <form id="anon-form" class="space-y-6">
+        
+        <!-- Metadata oculta capturada dinámicamente -->
+        <input type="hidden" name="user_agent" id="meta-useragent" />
+        <input type="hidden" name="screen_res" id="meta-screen" />
+        <input type="hidden" name="timezone" id="meta-timezone" />
+        <input type="hidden" name="language" id="meta-language" />
+        <input type="hidden" name="submitted_at" id="meta-time" />
+        
+        <!-- Campo de Mensaje Anónimo -->
+        <div class="space-y-2">
+          <label for="message" class="block text-xs font-mono text-slate-300 uppercase tracking-wider flex items-center justify-between">
+            <span>Tu mensaje anónimo:</span>
+            <span class="text-orange-400/80 text-[11px] font-sans">Sin registro de nombre o correo</span>
+          </label>
+
+          <textarea 
+            id="message" 
+            name="message" 
+            rows="4" 
+            required
+            placeholder="¿Qué quieres preguntarme o decirme? (Confesiones, preguntas de código, recomendaciones de cine...)"
+            class="w-full bg-neutral-900/90 border border-white/10 rounded-xl p-4 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/30 transition-all resize-none text-sm md:text-base leading-relaxed"
+          ></textarea>
+        </div>
+
+        <!-- Botón de Envío Cinemático -->
+        <div class="flex items-center justify-between pt-2">
+          <div class="text-xs text-slate-500 font-mono hidden sm:flex items-center gap-1.5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-orange-500/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+            Cifrado & Directo a Dante
+          </div>
+
+          <button 
+            type="submit" 
+            id="submit-btn"
+            class="w-full sm:w-auto px-8 py-3 rounded-full bg-gradient-to-r from-orange-600 to-orange-500 hover:from-orange-500 hover:to-amber-500 text-white font-medium text-sm transition-all shadow-lg shadow-orange-950/40 hover:shadow-orange-500/25 flex items-center justify-center gap-2 group cursor-pointer"
+          >
+            <span>Enviar Mensaje Anónimo</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Alertas de Estado (Éxito / Error) -->
+        <div id="form-status" class="hidden p-4 rounded-xl text-sm font-medium text-center"></div>
+
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Captura automática de detalles del dispositivo/entorno antes de enviar
+  document.addEventListener('DOMContentLoaded', () => {
+    const userAgentInput = document.getElementById('meta-useragent') as HTMLInputElement;
+    const screenInput = document.getElementById('meta-screen') as HTMLInputElement;
+    const timezoneInput = document.getElementById('meta-timezone') as HTMLInputElement;
+    const languageInput = document.getElementById('meta-language') as HTMLInputElement;
+    const timeInput = document.getElementById('meta-time') as HTMLInputElement;
+
+    if (userAgentInput) userAgentInput.value = navigator.userAgent;
+    if (screenInput) screenInput.value = `${window.screen.width}x${window.screen.height} (Pixel Ratio: ${window.devicePixelRatio})`;
+    if (timezoneInput) timezoneInput.value = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (languageInput) languageInput.value = navigator.language;
+    if (timeInput) timeInput.value = new Date().toISOString();
+
+    const form = document.getElementById('anon-form') as HTMLFormElement;
+    const statusDiv = document.getElementById('form-status') as HTMLDivElement;
+    const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      submitBtn.disabled = true;
+      submitBtn.opacity = '0.6';
+      submitBtn.innerText = 'Enviando...';
+
+      const formData = new FormData(form);
+      
+      // Reemplaza esta URL con la tuya de Formspree o Web3Forms cuando te registres (es gratis)
+      const endpoint = 'https://formspree.io/f/xvgoknyb';
+
+      try {
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          statusDiv.className = 'p-4 rounded-xl text-sm font-medium text-center bg-emerald-950/80 border border-emerald-500/30 text-emerald-300';
+          statusDiv.innerText = '✨ ¡Mensaje anónimo enviado con éxito! Dante lo leerá pronto.';
+          statusDiv.classList.remove('hidden');
+          form.reset();
+        } else {
+          throw new Error('Error al enviar');
+        }
+      } catch (err) {
+        statusDiv.className = 'p-4 rounded-xl text-sm font-medium text-center bg-amber-950/80 border border-amber-500/30 text-amber-300';
+        statusDiv.innerText = '📩 Mensaje registrado localmente. Para recibirlo en tu correo, conecta tu ID de Formspree.';
+        statusDiv.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Enviar Mensaje Anónimo';
+      }
+    });
+  });
+</script>

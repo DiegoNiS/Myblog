@@ -26,14 +26,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 22
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build site with Astro
-        run: npm run build
+        run: npx astro build
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3

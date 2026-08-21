@@ -1,0 +1,66 @@
+---
+import PlaceholderImage from './PlaceholderImage.astro';
+---
+
+<section id="hackathon" class="py-24 px-6 relative bg-neutral-950/90 border-t border-white/5">
+  <!-- Glow cinemático de victoria -->
+  <div class="absolute top-1/2 left-10 -translate-y-1/2 w-[450px] h-[300px] bg-amber-500/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+  <div class="max-w-5xl mx-auto relative z-10 space-y-12">
+    
+    <!-- Encabezado de Sección -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div class="space-y-2">
+        <div class="flex items-center gap-2 text-amber-500 font-mono text-xs font-semibold tracking-wider uppercase">
+          <span>🏆 1er Puesto // Hackathon Nexia</span>
+        </div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white tracking-tight">
+          Construir bajo presión y ganar
+        </h2>
+      </div>
+      <p class="text-xs font-mono text-slate-400">
+        Equipo: Dante • Ower • Maxs
+      </p>
+    </div>
+
+    <!-- Grid Contenido -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <!-- Foto del Equipo / Victoria -->
+      <div class="lg:col-span-6">
+        <div class="glass-card p-3 rounded-2xl relative group">
+          <PlaceholderImage 
+            src="/assets/hackathon-nexia.jpg"
+            alt="Foto del equipo ganador de la Hackathon Nexia con Dante, Ower y Maxs celebrando el 1er lugar"
+            title="1er Lugar en Hackathon Nexia (Dante, Ower & Maxs)"
+            badge="Hackathon Nexia 🏆"
+            aspectRatio="aspect-[4/3]"
+          />
+        </div>
+      </div>
+
+      <!-- Texto extenso de la Hackathon -->
+      <div class="lg:col-span-6 space-y-6">
+        <div class="glass-card p-8 rounded-2xl border border-white/10 space-y-4">
+          <h3 class="text-xl font-bold text-amber-400 font-mono flex items-center gap-2">
+            <span>⚡</span> El primer lugar en la Hackathon Nexia
+          </h3>
+
+          <p class="text-slate-300 text-base leading-relaxed font-light">
+            Las verdaderas capacidades de un desarrollador no se prueban en un entorno cómodo, sino cuando el reloj corre en reversa, hay pizza fría sobre la mesa y te quedan dos horas para presentar un MVP completamente funcional.
+          </p>
+
+          <p class="text-slate-300 text-base leading-relaxed font-light">
+            Junto con <strong class="text-white font-medium">Ower</strong> y <strong class="text-white font-medium">Maxs</strong>, entramos a la Hackathon Nexia a demostrar lo que sabíamos hacer. Fueron horas de arquitectura intensa, depuración en tiempo real y discusiones acaloradas sobre la mejor manera de resolver el problema. El resultado no solo fue un código limpio y escalable, sino el <span class="text-amber-400 font-semibold underline underline-offset-4 decoration-amber-500/50">1er puesto absoluto</span> de la competición.
+          </p>
+
+          <p class="text-slate-400 text-sm italic font-mono border-l-2 border-amber-500/40 pl-3">
+            "Ganar no es solo tener la mejor idea, es saber ejecutarla en equipo sin que nada se rompa en el intento."
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>

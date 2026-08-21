@@ -1,0 +1,90 @@
+---
+import PlaceholderImage from './PlaceholderImage.astro';
+
+const friends = [
+  {
+    name: "Alex",
+    role: "Hermano de Código & Lealtad",
+    desc: "De esas personas con las que puedes pasar horas debatiendo ideas o simplemente compartiendo el silencio sin que resulte incómodo. Una pieza clave en mi evolución."
+  },
+  {
+    name: "Ower",
+    role: "Co-equiper de Hackathons & Batallas",
+    desc: "El compañero perfecto para lanzarse a proyectos imposibles, programar de madrugada en hackathons y celebrar victorias como la de Nexia."
+  }
+];
+---
+
+<section id="relationships" class="py-24 px-6 relative bg-neutral-950/80 border-t border-white/5">
+  <!-- Glow naranja de fondo -->
+  <div class="absolute bottom-0 left-1/4 w-[500px] h-[300px] bg-orange-600/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+  <div class="max-w-5xl mx-auto relative z-10 space-y-12">
+    
+    <!-- Encabezado de Sección -->
+    <div class="flex items-center gap-3">
+      <span class="text-orange-500 font-mono text-sm font-semibold tracking-wider uppercase">05 //</span>
+      <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Lealtad & Aprendizajes de Vida</h2>
+      <div class="h-[1px] bg-white/10 flex-1 ml-4"></div>
+    </div>
+
+    <!-- Sección Lealtad y Mejores Amigos -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      
+      <!-- Columna Texto Aprendizaje en Relaciones -->
+      <div class="lg:col-span-6 flex flex-col justify-between space-y-6">
+        <div class="glass-card p-8 rounded-2xl border border-white/10 space-y-4 flex-1">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-mono">
+            <span>🌱</span> Lecciones & Evolución
+          </div>
+
+          <h3 class="text-xl font-bold text-white">
+            Relaciones pasadas y el arte de aprender de todo
+          </h3>
+
+          <p class="text-slate-300 text-sm md:text-base leading-relaxed font-light">
+            Las personas que han pasado por mi vida, tanto en lo personal como en lo sentimental, me han dejado enseñanzas imborrables. He aprendido a valorar la lealtad, a entender que los finales no son fracasos sino cierres de etapas, y que cada relación te enseña algo nuevo sobre ti mismo.
+          </p>
+
+          <p class="text-slate-300 text-sm md:text-base leading-relaxed font-light">
+            Hoy miro hacia atrás con gratitud y madurez: cada historia me ha ayudado a definir mejor lo que busco, lo que tolero y lo que estoy dispuesto a entregar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Columna Foto Placeholder Amigos -->
+      <div class="lg:col-span-6">
+        <div class="glass-card p-3 rounded-2xl h-full flex flex-col justify-center">
+          <PlaceholderImage 
+            src="/assets/amigos-dante.jpg"
+            alt="Fotografía de Dante con sus mejores amigos Alex y Ower compartiendo un buen momento"
+            title="Mis Amigos (Alex & Ower)"
+            badge="Círculo Cercano"
+            aspectRatio="aspect-[16/10]"
+          />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Cards de Alex & Ower -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+      {friends.map((friend) => (
+        <div class="glass-panel p-6 rounded-2xl border border-white/10 space-y-3 relative group hover:border-orange-500/30 transition-all">
+          <div class="flex items-center justify-between">
+            <h4 class="text-lg font-bold text-white group-hover:text-orange-400 transition-colors">
+              {friend.name}
+            </h4>
+            <span class="text-[11px] font-mono text-slate-400 bg-white/5 border border-white/10 px-2.5 py-0.5 rounded-full">
+              {friend.role}
+            </span>
+          </div>
+          <p class="text-slate-300 text-xs md:text-sm leading-relaxed font-light">
+            {friend.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -16,11 +16,14 @@
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     background-color: var(--color-bg-base);
     color: #f1f5f9;
+    overflow-x: hidden;
+    max-width: 100vw;
   }
 
   body {
     min-height: 100vh;
     overflow-x: hidden;
+    max-width: 100vw;
     background-color: #050507;
     background-image: 
       radial-gradient(ellipse 80% 50% at 50% -20%, rgba(234, 88, 12, 0.08), transparent),

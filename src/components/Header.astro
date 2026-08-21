@@ -1,24 +1,24 @@
 ---
 ---
 <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-  <div class="max-w-6xl mx-auto px-6 py-4">
-    <nav class="glass-panel rounded-full px-6 py-3 flex items-center justify-between border border-white/10 shadow-2xl">
+  <div class="max-w-6xl mx-auto px-3 sm:px-6 py-3 sm:py-4">
+    <nav class="glass-panel rounded-full px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border border-white/10 shadow-2xl">
       <!-- Brand Logo / Domain -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="relative w-8 h-8 rounded-full bg-gradient-to-tr from-orange-600 via-orange-500 to-amber-400 p-[1px] flex items-center justify-center">
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+        <div class="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-orange-600 via-orange-500 to-amber-400 p-[1px] flex items-center justify-center">
           <div class="w-full h-full bg-neutral-950 rounded-full flex items-center justify-center text-xs font-mono font-bold text-orange-400 group-hover:bg-neutral-900 transition-colors">
             D
           </div>
         </div>
         <div class="flex flex-col">
-          <span class="font-bold tracking-tight text-white group-hover:text-orange-400 transition-colors text-sm md:text-base">
+          <span class="font-bold tracking-tight text-white group-hover:text-orange-400 transition-colors text-xs sm:text-base">
             dante<span class="text-orange-500">.duhvia.com</span>
           </span>
         </div>
       </a>
 
-      <!-- Status Indicator -->
-      <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-slate-400 font-mono">
+      <!-- Status Indicator (Desktop only) -->
+      <div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-slate-400 font-mono">
         <span class="relative flex h-2 w-2">
           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
           <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
@@ -27,13 +27,13 @@
       </div>
 
       <!-- Navigation Links -->
-      <div class="flex items-center gap-6 text-xs md:text-sm font-medium text-slate-300">
-        <a href="#about" class="hover:text-orange-400 transition-colors">Sobre Mí</a>
-        <a href="#vibes" class="hover:text-orange-400 transition-colors">Cultura</a>
-        <a href="#lifestyle" class="hover:text-orange-400 transition-colors">Lifestyle</a>
-        <a href="#anonymous" class="hover:text-orange-400 transition-colors text-orange-400/90 font-semibold">Anónimo 🔒</a>
-        <a href="https://duhvia.com" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-full bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/30 transition-all font-mono text-xs hidden sm:inline-block">
-          Agencia Duhvia ↗
+      <div class="flex items-center gap-2 sm:gap-4 md:gap-6 text-[11px] sm:text-xs md:text-sm font-medium text-slate-300 overflow-x-auto no-scrollbar py-0.5">
+        <a href="#about" class="hover:text-orange-400 transition-colors whitespace-nowrap">Sobre Mí</a>
+        <a href="#vibes" class="hover:text-orange-400 transition-colors whitespace-nowrap">Cultura</a>
+        <a href="#lifestyle" class="hover:text-orange-400 transition-colors whitespace-nowrap">Lifestyle</a>
+        <a href="#anonymous" class="hover:text-orange-400 transition-colors text-orange-400/90 font-semibold whitespace-nowrap">Anónimo 🔒</a>
+        <a href="https://duhvia.com" target="_blank" rel="noopener noreferrer" class="px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 border border-orange-500/30 transition-all font-mono text-[11px] sm:text-xs hidden md:inline-block whitespace-nowrap">
+          Duhvia ↗
         </a>
       </div>
     </nav>

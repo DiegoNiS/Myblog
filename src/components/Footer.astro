@@ -10,30 +10,39 @@ const footerSocials = [
 ---
 
 <footer class="py-16 px-6 border-t border-white/10 bg-neutral-950 relative">
-  <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+  <div class="max-w-5xl mx-auto flex flex-col items-center justify-center space-y-8 text-center">
     
-    <!-- Info Dante / Duhvia -->
-    <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-1">
-      <span class="text-white font-bold tracking-tight text-lg">
-        Dante <span class="text-orange-500">• dante.duhvia.com</span>
-      </span>
-      <p class="text-xs text-slate-400 font-mono">
-        UNSA (Arequipa) & Co-fundador @ <a href="https://duhvia.com" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:underline">Duhvia</a>
+    <div class="flex flex-col md:flex-row items-center justify-between w-full gap-6">
+      <!-- Info Dante / Duhvia -->
+      <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-1">
+        <span class="text-white font-bold tracking-tight text-lg">
+          Dante <span class="text-orange-500">• dante.duhvia.com</span>
+        </span>
+        <p class="text-xs text-slate-400 font-mono">
+          UNSA (Arequipa) & Co-fundador @ <a href="https://duhvia.com" target="_blank" rel="noopener noreferrer" class="text-orange-400 hover:underline">Duhvia</a>
+        </p>
+      </div>
+
+      <!-- Enlaces Rápidos a Redes Social en el Footer -->
+      <div class="flex flex-wrap justify-center items-center gap-4 text-xs font-mono text-slate-400">
+        {footerSocials.map((item) => (
+          <a href={item.href} target="_blank" rel="noopener noreferrer" class="hover:text-orange-400 transition-colors">
+            {item.name}
+          </a>
+        ))}
+      </div>
+
+      <!-- Copyright -->
+      <div class="text-xs text-slate-500 font-mono text-center md:text-right">
+        © {new Date().getFullYear()} Dante. <span class="text-slate-600 block sm:inline">MI sitio, mis reglas.</span>
+      </div>
+    </div>
+
+    <!-- Mensaje Secreto al Final del Todo (Easter Egg) -->
+    <div class="pt-4 border-t border-white/5 w-full flex items-center justify-center">
+      <p class="text-[11px] font-mono text-slate-600 italic tracking-wider hover:text-orange-400/80 transition-colors cursor-default select-none">
+        No creo que alguien haya llegado a leer hasta aquí, pero si es así... <span class="text-orange-400 font-medium not-italic">tkm</span>. 🖤
       </p>
-    </div>
-
-    <!-- Enlaces Rápidos a Redes Social en el Footer -->
-    <div class="flex flex-wrap justify-center items-center gap-4 text-xs font-mono text-slate-400">
-      {footerSocials.map((item) => (
-        <a href={item.href} target="_blank" rel="noopener noreferrer" class="hover:text-orange-400 transition-colors">
-          {item.name}
-        </a>
-      ))}
-    </div>
-
-    <!-- Copyright -->
-    <div class="text-xs text-slate-500 font-mono text-center md:text-right">
-      © {new Date().getFullYear()} Dante. <span class="text-slate-600 block sm:inline">MI sitio, mis reglas.</span>
     </div>
 
   </div>

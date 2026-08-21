@@ -126,18 +126,32 @@ const socialLinks = [
 
     </div>
 
-    <!-- Carrusel Horizontal Discreto Centrado (Redes Sociales) -->
-    <div class="pt-4 border-t border-white/5 space-y-3 text-center">
+    <!-- Carrusel Ticker Infinito Discreto (Redes Sociales) -->
+    <div class="pt-4 border-t border-white/5 space-y-3 text-center overflow-hidden">
       <span class="text-[11px] font-mono text-slate-500 uppercase tracking-widest block">Contacto directo & Redes:</span>
       
-      <div class="relative w-full overflow-x-auto py-2 no-scrollbar scroll-smooth">
-        <div class="flex items-center justify-start md:justify-center gap-3 min-w-max px-4">
+      <div class="relative w-full overflow-hidden py-2 mask-linear-gradient">
+        <div class="animate-infinite-marquee gap-3">
+          <!-- Primer grupo de links -->
           {socialLinks.map((social) => (
             <a 
               href={social.href} 
               target="_blank" 
               rel="noopener noreferrer"
-              class={`px-4 py-2 rounded-full glass-panel text-slate-300 border border-white/10 text-xs font-medium transition-all flex items-center gap-2 hover:scale-105 ${social.color}`}
+              class={`px-4 py-2 rounded-full glass-panel text-slate-300 border border-white/10 text-xs font-medium transition-all flex items-center gap-2 hover:scale-105 shrink-0 ${social.color}`}
+            >
+              <span>{social.icon}</span>
+              <span>{social.name}:</span>
+              <span class="font-mono text-slate-400">{social.label}</span>
+            </a>
+          ))}
+          <!-- Duplicado para loop infinito sin saltos -->
+          {socialLinks.map((social) => (
+            <a 
+              href={social.href} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class={`px-4 py-2 rounded-full glass-panel text-slate-300 border border-white/10 text-xs font-medium transition-all flex items-center gap-2 hover:scale-105 shrink-0 ${social.color}`}
             >
               <span>{social.icon}</span>
               <span>{social.name}:</span>
